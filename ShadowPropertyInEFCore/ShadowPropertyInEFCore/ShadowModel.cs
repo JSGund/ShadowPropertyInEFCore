@@ -11,8 +11,18 @@ namespace ShadowPropertyInEFCore
             optionsBuilder.UseSqlServer(@"Server = .; Database = ShadowDbContext; Trusted_Connection = True; MultipleActiveResultSets = true");
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //creating navigation or shadow properties for single entity
+            modelBuilder.Entity<Article>().Property<DateTime>("CreatedDate");
+        }
+
         public DbSet<Shadow> Shadows { get; set; }
+
+        public DbSet<Article> Articles { get; set; }
     }
+
+    #region The old way to use and access
 
     public class Shadow : ITracking
     {
@@ -25,4 +35,17 @@ namespace ShadowPropertyInEFCore
     {
         DateTime CreatedDate { get; set; }
     }
+
+    #endregion The old way to use and access
+
+    #region The new way to use and access
+
+    public class Article
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+    }
+
+    #endregion The new way to use and access
 }

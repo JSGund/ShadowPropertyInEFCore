@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShadowPropertyInEFCore;
 
 namespace ShadowPropertyInEFCore.Migrations
 {
     [DbContext(typeof(ShadowDbContext))]
-    partial class ShadowDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191103145703_newTableArticle")]
+    partial class newTableArticle
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
